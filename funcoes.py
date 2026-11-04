@@ -67,3 +67,6 @@ def afundados(frota, tabuleiro):
                 quantidade += 1
 
     return quantidade
+
+def posicoes_validas(linha, coluna, orientacao, tamanho):
+    
