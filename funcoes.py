@@ -68,5 +68,16 @@ def afundados(frota, tabuleiro):
 
     return quantidade
 
-def posicoes_validas(linha, coluna, orientacao, tamanho):
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+    valida = True
+
+    for navios in frota.values():
+        for navio in navios:
+            for posicao in posicoes:
+                if posicao in navio:
+                    valida = False
+
+    return valida
+    
     
