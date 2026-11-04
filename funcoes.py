@@ -26,3 +26,32 @@ def faz_jogada(tabuleiro, linha, coluna):
         tabuleiro[linha][coluna] = '-'
 
     return tabuleiro
+
+def posiciona_frota(frota):
+    tabuleiro = [[0] * 10 for _ in range(10)]
+
+    for navios in frota.values():
+        for navio in navios:
+            for linha, coluna in navio:
+                tabuleiro[linha][coluna] = 1
+
+    return tabuleiro
+
+def afundados(frota, tabuleiro):
+    quantidade = 0
+
+    for nome in frota:
+        for navio in frota[nome]:
+            acertos = 0
+
+            for posicao in navio:
+                linha = posicao[0]
+                coluna = posicao[1]
+
+                if tabuleiro[linha][coluna] == 'X':
+                    acertos += 1
+
+            if acertos == len(navio):
+                quantidade += 1
+
+    return quantidade
